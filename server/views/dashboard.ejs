@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculus</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header">
+    <div class="header__container">
+        <a href="#" class="header__logo">
+            Calculus
+        </a>
+        <div class="header__right">
+            <div class="header__username">
+                Username
+            </div>
+            <button class="header__dashboard">
+                <picture><source srcset="img/header/Dashboard.svg" type="image/webp"><img src="img/header/Dashboard.svg" alt="Dashboard"></picture>
+            </button>
+            <button class="header__exit">
+                <picture><source srcset="img/header/LogOut.svg" type="image/webp"><img src="img/header/LogOut.svg" alt="LogOut"></picture>
+            </button>
+        </div>
+    </div>
+</header>
+        <main class="page">
+            <div class="dashboard">
+                <!-- <div class="dashboard__item dashboard-item">
+                    <h3 class="dashboard-item__heading">
+                        Calc
+                    </h3>
+                    <button class="dashboard-item__delete">
+                        x
+                    </button>
+                </div> -->
+                <div class="dashboard__item dashboard__item_new">
+                    <button class="dashboard-item__create-new">
+                        +
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="popup popup__error">
+    <div class="popup__body">
+        <h3 class="popup__error-heading">
+            Error!
+        </h3>
+        <p class="popup__error-text">
+            Error
+        </p>
+        <button class="popup__ok-button" id="error-button">
+            Ok
+        </button>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+<div class="popup popup__sure">
+    <div class="popup__body">
+        <h3 class="popup__sure-heading">
+            Are you sure?
+        </h3>
+        <div class="popup__sure-buttons">
+            <button class="popup__sure-no">
+                No
+            </button>
+            <button class="popup__sure-yes">
+                Yes
+            </button>
+        </div>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+<div class="popup popup__success">
+    
+    <div class="popup__body">
+        <h3 class="popup_success-heading">
+            Success!
+        </h3>
+        <p class="popup__success-text">
+            Success
+        </p>
+        <button class="popup__ok-button" id="success-button">
+            Ok
+        </button>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+    <script src="js/popup.js"></script>
+<script src="js/webp.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
+

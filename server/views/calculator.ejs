@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculus</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <header class="header">
+    <div class="header__container">
+        <a href="/dashboard" class="header__logo">
+            Calculus
+        </a>
+        <div class="header__right">
+            <div class="header__username">
+                <%= currentUser.name %>
+            </div>
+            <!-- <button class="header__dashboard">
+                <picture><source srcset="img/header/Dashboard.svg" type="image/webp"><img src="img/header/Dashboard.svg" alt="Dashboard"></picture>
+            </button> -->
+            <form action="/logout" method="post" class="">
+                <button type="submit" name="Logout" class="header__exit">
+                    <picture><source srcset="img/header/LogOut.svg" type="image/webp"><img src="img/header/LogOut.svg" alt="LogOut"></picture>
+                </button>
+            </form>
+            <!-- <button class="header__exit">
+                <picture><source srcset="img/header/LogOut.svg" type="image/webp"><img src="img/header/LogOut.svg" alt="LogOut"></picture>
+            </button> -->
+        </div>
+    </div>
+</header>
+        <main class="page">
+            <div class="calculator">
+                <input type="text" class="calculator__field" placeholder="0" readonly>
+                <div class="calculator__grid">
+                    <!-- <div class="calculator__setting">
+                        <span class="calculator__label">Set:</span>
+                        <select name="select" class="calculator__select">
+                            <option value="Integer">Integer</option>
+                            <option value="Float">Float</option>
+                        </select>
+                    </div> -->
+                    <!-- <button type="submit" class="calculator__setting">
+                        <p>Save</p>
+                    </button> -->
+                    <form action="/calculator" method="POST" class="calculator__setting">
+                        <input type="text" name="history" id='history-data'>
+                        <input type="submit" value="Save">
+                    </form>
+                    <button class="calculator__button calculator__clear">
+                        C
+                    </button>
+                    <button class="calculator__button calculator__erase">
+                        ⌫
+                    </button>
+
+                    <button class="calculator__button calculator__open-bracket">(</button>
+                    <button class="calculator__button calculator__7">7</button>
+                    <button class="calculator__button calculator__8">8</button>
+                    <button class="calculator__button calculator__9">9</button>
+                    <button class="calculator__button calculator__divide">÷</button>
+                    
+                    <button class="calculator__button calculator__close-bracket">)</button>
+                    <button class="calculator__button calculator__4">4</button>
+                    <button class="calculator__button calculator__5">5</button>
+                    <button class="calculator__button calculator__6">6</button>
+                    <button class="calculator__button calculator__multiply">x</button>
+
+                    <button class="calculator__button calculator__pow">^</button>
+                    <button class="calculator__button calculator__1">1</button>
+                    <button class="calculator__button calculator__2">2</button>
+                    <button class="calculator__button calculator__3">3</button>
+                    <button class="calculator__button calculator__minus">-</button>
+
+                    <button class="calculator__button calculator__root">√</button>
+                    <button class="calculator__button calculator__comma">,</button>
+                    <button class="calculator__button calculator__0">0</button>
+                    <button class="calculator__button calculator__equals">=</button>
+                    <button class="calculator__button calculator__plus">+</button>
+                </div>
+            </div>
+            <div class="history__wrapper">
+                <ul class="history">
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <div class="popup popup__error">
+    <div class="popup__body">
+        <h3 class="popup__error-heading">
+            Error!
+        </h3>
+        <p class="popup__error-text">
+            Error
+        </p>
+        <button class="popup__ok-button" id="error-button">
+            Ok
+        </button>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+<div class="popup popup__sure">
+    <div class="popup__body">
+        <h3 class="popup__sure-heading">
+            Are you sure?
+        </h3>
+        <div class="popup__sure-buttons">
+            <button class="popup__sure-no">
+                No
+            </button>
+            <button class="popup__sure-yes">
+                Yes
+            </button>
+        </div>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+<div class="popup popup__success">
+    
+    <div class="popup__body">
+        <h3 class="popup_success-heading">
+            Success!
+        </h3>
+        <p class="popup__success-text">
+            Success
+        </p>
+        <button class="popup__ok-button" id="success-button">
+            Ok
+        </button>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+    <script src="js/popup.js"></script>
+<script src="js/webp.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/9.5.1/math.js" integrity="sha512-AfRcJIj922x/jSJpQLnry0DYIBg6EGCtwk/MiQ6QvDlzb7kNFxH8EdqXLkaXXY3YHQS9FrSb8H7LzuLn0CZQ1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        (
+            function(){
+                let history = '<%- currentUser.history%>';
+                history = history.split(',');
+                history = history.map(Number);
+
+                const historyElement = document.querySelector('.history');
+
+                history.forEach(item => {
+                    const elem = document.createElement('li');
+                    elem.classList.add('history__item');
+                    elem.innerHTML = item;
+                    historyElement.appendChild(elem);
+                });
+            }
+        )()
+        
+    </script>
+    <script src="js/calculator.js"></script>
+</body>
+</html>
+

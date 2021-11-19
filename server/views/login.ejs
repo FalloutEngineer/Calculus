@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculus</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+</head>
+
+<%if (messages.error) {messages.error}%>
+
+<body>
+
+    <div class="wrapper">
+
+        <main class="page">
+            <div class="registration">
+                <h2 class="registration__heading">
+                    Login
+                </h2>
+                <form action="/login" method="POST" class="registration__form">
+                    <label class="registration__label" for="username">Username <span class="red-star">*</span></label>
+                    <input required type="text" name="username" class="registration__input" id="username">
+
+                    <label class="registration__label" for="username">Password <span class="red-star">*</span></label>
+                    <input required type="password" name="password" class="registration__input" id="password">
+
+                    <!-- <button class="registration__submit" type="submit">Login</button> -->
+                    <input type="submit" value="Login" class="registration__submit">
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <div class="popup popup__error">
+    <div class="popup__body">
+        <h3 class="popup__error-heading">
+            Error!
+        </h3>
+        <p class="popup__error-text">
+            Error
+        </p>
+        <button class="popup__ok-button" id="error-button">
+            Ok
+        </button>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+<div class="popup popup__sure">
+    <div class="popup__body">
+        <h3 class="popup__sure-heading">
+            Are you sure?
+        </h3>
+        <div class="popup__sure-buttons">
+            <button class="popup__sure-no">
+                No
+            </button>
+            <button class="popup__sure-yes">
+                Yes
+            </button>
+        </div>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+<div class="popup popup__success">
+    
+    <div class="popup__body">
+        <h3 class="popup_success-heading">
+            Success!
+        </h3>
+        <p class="popup__success-text">
+            Success
+        </p>
+        <button class="popup__ok-button" id="success-button">
+            Ok
+        </button>
+    </div>
+    <div class="popup__background">
+        
+    </div>
+</div>
+    <script src="js/popup.js"></script>
+<script src="js/webp.js"></script>
+</body>
+</html>
