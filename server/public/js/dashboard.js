@@ -7,11 +7,12 @@
 
         let calculators = [];
 
+        const socket = io();
+
 
         createButton.addEventListener('click', () => {
             createCalculator();
         })
-
 
 
         function createCalculator(){
@@ -29,6 +30,12 @@
             deleteBtn.innerHTML = 'x';
 
             deleteBtn.addEventListener('click', e => {
+                let calculatorId = parseInt(deleteBtn.parentElement.querySelector('.dashboard-item__heading').innerHTML.split(' ')[1], 10);
+                socket.emit('delete-calculator', {id: calculatorId})
+                calculators = calculators.filter(function(value, index, arr){
+                    return value != deleteBtn.parentElement;
+                })
+                console.log(calculators);
                 deleteBtn.parentElement.parentElement.removeChild(deleteBtn.parentElement);
             })
 
@@ -39,6 +46,8 @@
             calculators.push(newCalculator);
 
             container.prepend(newCalculator);
+
+            socket.emit('create-calculator', {id: calculators.length - 1})
         }
 
 
@@ -46,9 +55,6 @@
 
 
 
-        function setDeleteListeners(){
-
-        }
 
         function updateCalculators(){
 

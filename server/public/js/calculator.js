@@ -26,12 +26,24 @@
 
         const history = document.querySelector('.history');
 
+        const radios = document.querySelectorAll('.mode-switch');
+
         let calcString = '';
+
+        const socket = io();
+
+        socket.on('calculate-string', (data) => {
+            calcString = data.message
+            updateField();
+            appendResult();
+        })
         
         setNumberListeners(numberButtons);
         setSpecialListeners();
         setOperatorListeners();
+        setRadioListeners();
         saveHistory();
+
 
         function getNumberButtons(buttons){
             const numberButtons = [];
@@ -102,9 +114,15 @@
                 updateField();
             })
             equalsButton.addEventListener('click', e => {
-                calcString = math.evaluate(calcString);
-                updateField();
-                appendResult();
+                socket.emit('calculate-string', {message: calcString});
+            })
+        }
+
+        function setRadioListeners(){
+            radios.forEach(radio => {
+                radio.addEventListener('click', () => {
+                    socket.emit('radio-change', {radio: radio.getAttribute('value')})
+                })
             })
         }
 
@@ -131,13 +149,14 @@
         }
 
         function saveHistory(){
-            const dataElement = document.querySelector('#history-data');
             let outArray = [];
             history.querySelectorAll('*').forEach(child => {
                 outArray.push(parseFloat(child.innerHTML))
             })
 
-            dataElement.value = outArray;
+            console.log(outArray);
+
+            socket.emit('save-history', {history: outArray})
         }
     }
 )(document,math)

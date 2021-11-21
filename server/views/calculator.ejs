@@ -52,10 +52,18 @@
                     <!-- <button type="submit" class="calculator__setting">
                         <p>Save</p>
                     </button> -->
-                    <form action="/calculator" method="POST" class="calculator__setting">
+                    <!-- <form action="/calculator" method="POST" class="calculator__setting">
                         <input type="text" name="history" id='history-data'>
                         <input type="submit" value="Save">
+                    </form> -->
+                    <div class="placeholder"></div>
+                    <form class="calculator__mode-switch">
+                        <input class="mode-switch" type="radio" name="type" value="real" id="real" checked='checked'>
+                        <label for="real">Real</label><br>
+                        <input class="mode-switch" type="radio" name="type" value="complex" id="complex">
+                        <label for="complex">Complex</label><br>
                     </form>
+                    <div class="placeholder"></div>
                     <button class="calculator__button calculator__clear">
                         C
                     </button>
@@ -166,10 +174,17 @@
                     elem.innerHTML = item;
                     historyElement.appendChild(elem);
                 });
+
+
+                let radio = '<%- currentUser.radio%>';
+                if(radio){
+                    let checked = document.querySelector(`input[value=${radio}]`).checked = true;
+                }
             }
         )()
         
     </script>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="js/calculator.js"></script>
 </body>
 </html>

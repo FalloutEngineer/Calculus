@@ -873,6 +873,10 @@ body._locked, html._locked {
   background-color: #C79141;
 }
 
+.calculator__mode-switch label{
+  color: white;
+}
+
 .history {
   display: -webkit-box;
   display: -ms-flexbox;
